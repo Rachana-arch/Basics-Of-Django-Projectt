@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+    <style>
+      table, th, td {
+      border: 1px solid white;
+      border-collapse: collapse;
+      border: 1px solid black;
+                     }
+</style>
+</head>
+<body>
+<table>
+{% for i in response %}
+    <tr>
+        <th>User_phone_no</th>
+        <th>longitude</th>
+        <th>latitude</th>
+        <th>task_id</th>
+    </tr>
+    <tr>
+        <td> {{i.user_phone_no}} </td>
+        <td> {{i.longitude}} </td>
+        <td> {{i.latitude}} </td>
+        <td> {{i.task_id}} </td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>
