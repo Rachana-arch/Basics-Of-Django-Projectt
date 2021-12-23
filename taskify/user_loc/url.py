@@ -19,6 +19,18 @@ from rest_framework import routers
 from .views import *
 # define the router
 router = routers.DefaultRouter()
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title="Snippets API",
+        default_version='v1',
+        description="Test description"    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)
 
 # define the router path and viewset to be used
 #router.register(r'users_data', mfy_users, basename='user_data')
@@ -26,5 +38,6 @@ router = routers.DefaultRouter()
 urlpatterns = [
     path('user_detail/', users),
     path('user_detail/<int:task_id>/', user_detail),
-    path('', index, name='index')
+    path('', index, name='index'),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui')
 ]
